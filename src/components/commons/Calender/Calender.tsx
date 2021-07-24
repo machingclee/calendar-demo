@@ -25,7 +25,7 @@ function divide<T>(arr: T[] | undefined, by: number) {
   const length = arr.length;
   const arr_ = arr.slice();
 
-  const numberOfIter = Math.ceil(length / by) + 1;
+  const numberOfIter = Math.ceil(length / by);
   const container: T[][] = [];
 
   range(numberOfIter)
