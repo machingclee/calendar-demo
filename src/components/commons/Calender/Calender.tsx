@@ -15,11 +15,15 @@ export type TCanlenderItem = {
   value?: string,
   date?: Date,
   children?: TCanlenderItem[]
-  toDoList?: { title: string, detail: string }[]   // this only exists when type == DAY
 }
 
+// this stuff should be in redux and a slice with 12 keys (in terms of redux toolkit)
+export type TToDoList = { title: string, detail: string }[]
 
-export default () => {
+export default ({ year }: {
+  year: number
+}) => {
+  const year_ = String(year);
   const [activeMonth, setActiveMonth] = useState(1);
 
 
@@ -30,7 +34,7 @@ export default () => {
   return (
     <div className="calender">
       <button onClick={minusMonth}> - </button> {activeMonth} <button onClick={addMonth}> + </button>
-      {utils.getYearItem("2021").children?.map(monthItem => {
+      {utils.getYearItem(year_).children?.map(monthItem => {
         const currMonth = monthItem.value || "";
         const dayItems = monthItem.children || [];
         return (

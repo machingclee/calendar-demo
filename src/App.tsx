@@ -6,7 +6,9 @@ import Calender from "./components/commons/Calender/Calender";
 function App() {
   return (
     <div className="App" style={{ display: "flex", justifyContent: "center" }}>
-      <Calender />
+      <Calender
+        year={2021}
+      />
     </div>
   );
 }

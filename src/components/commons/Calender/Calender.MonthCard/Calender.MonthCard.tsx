@@ -43,16 +43,17 @@ export default ({ month, dayItems }: {
   const firstDayValue = Number(dayItems[0].date?.getDay());
   const lastDayValue = Number(dayItems[totalNumOfDays - 1].date?.getDay());
   const leftPadding: TCanlenderItem[] = Array(firstDayValue).fill({ type: DateType.DAY, value: "" });
-  const rightPadding: TCanlenderItem[] = Array(7 - lastDayValue).fill({ type: DateType.DAY, value: "" });
-  const literalDays = "Sun,Mon,Tue,Wed,Thu,Fri,Sat".split(",")
+  const rightPadding: TCanlenderItem[] = Array(6 - lastDayValue).fill({ type: DateType.DAY, value: "" });
   const concatedDayItems = leftPadding.concat(dayItems).concat(rightPadding);
+  const literalDays = "Sun,Mon,Tue,Wed,Thu,Fri,Sat".split(",")
+
   return (
     <div className="month-card">
       <div className="month-row">
         {indexToMonth(month)}
       </div>
-      <div className="days-container">
-        <div className="days-row">
+      <div className="days-container literal">
+        <div className="days-row ">
           {literalDays.map(literalDay => {
             return (
               <div className="day">{literalDay}</div>
@@ -64,7 +65,17 @@ export default ({ month, dayItems }: {
             return (
               <div className="days-row">
                 {dividedDayItems.map(dayItem => {
-                  return <div className="day">{dayItem.value}</div>
+                  return (
+                    <div className="day">
+                      {dayItem.value && (
+                        <div className="day-row">
+                          <div className="day-value">
+                            {dayItem.value}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
                 })}
               </div>
             )
