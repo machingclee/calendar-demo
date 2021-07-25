@@ -3,25 +3,36 @@ import utils from "../../../../utils";
 import { DateType, TCanlenderItem } from "../Calender";
 import "./Calender.MonthCard.scss";
 
+const indexToMonthDict = {
+  "1": "Jan",
+  "2": "Feb",
+  "3": "Mar",
+  "4": "Apr",
+  "5": "May",
+  "6": "June",
+  "7": "July",
+  "8": "Aug",
+  "9": "Sep",
+  "10": "Oct",
+  "11": "Nov",
+  "12": "Dec"
+}
+
+type TPermittedIndex = keyof typeof indexToMonthDict;
+const permittedIndexArray = Object.keys(indexToMonthDict);
+
 const indexToMonth = (index: number | string | undefined) => {
   if (index === undefined) {
     return ""
   }
   const index_ = String(index);
-  return {
-    "1": "Jan",
-    "2": "Feb",
-    "3": "Mar",
-    "4": "Apr",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "Aug",
-    "9": "Sep",
-    "10": "Oct",
-    "11": "Nov",
-    "12": "Dec"
-  }[index_];
+
+
+  if (!permittedIndexArray.includes(index_)) {
+    return "";
+  }
+
+  return indexToMonthDict[index_ as TPermittedIndex];
 }
 
 
