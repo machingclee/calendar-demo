@@ -27,7 +27,6 @@ const indexToMonth = (index: number | string | undefined) => {
   }
   const index_ = String(index);
 
-
   if (!permittedIndexArray.includes(index_)) {
     return "";
   }
