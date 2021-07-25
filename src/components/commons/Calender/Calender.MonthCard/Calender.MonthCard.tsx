@@ -59,8 +59,8 @@ export default ({ month, dayItems }: {
             )
           })}
         </div>
-        {utils.divide(concatedDayItems, 7) //divide days by group of 10
-          .map(dividedDayItems => { // each dividedDayItem has at most length 10
+        {utils.divide(concatedDayItems, 7) //divide days by group of 7
+          .map(dividedDayItems => { // each dividedDayItem has at most length 7
             return (
               <div className="days-row">
                 {dividedDayItems.map(dayItem => {

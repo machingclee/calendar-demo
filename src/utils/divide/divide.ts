@@ -11,7 +11,7 @@ export function divide<T>(arr: T[] | undefined, by: number) {
   const container: T[][] = [];
 
   utils.range(numberOfIter)
-    .forEach(iteration => {
+    .forEach(_ => {
       const splicedElements = arr_.splice(0, by);
       container.push(splicedElements);
     })
